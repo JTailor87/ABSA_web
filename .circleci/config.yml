@@ -3,7 +3,7 @@ version: 2.1
 jobs:
   build:
     docker:
-      - image: amazoncorretto:18.0.2
+      - image: amazoncorretto:17.0.5
 
     working_directory: ~/repo
 
