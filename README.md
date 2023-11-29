@@ -69,13 +69,13 @@ Open source UI Automation Framework.
 ## Tests
 
 - In `src/main/java/org/example/factory/DriverFactory.java` the chrome version is hardcoded. Currently is `119.0.6045.160`.
-- If you don't want to hardcode then remove the `.browserVersion("119.0.6045.160")` from `src/main/java/org/example/factory/DriverFactory.java`. By doing this if `driverManager` won't pik up your current chrome version automatically then you can hardcode the chrome version as above.
+- If you don't want to hardcode then remove the `.browserVersion("119.0.6045.160")` from `src/main/java/org/example/factory/DriverFactory.java`. By doing this if `driverManager` won't pick up your current chrome version automatically then you can hardcode the chrome version as above.
 - Open `src/test/java/runner/testRunner.java`
 - Run `testRunner` class
-- If you want to run test parallely by opening browser instance at a time, change the `@DataProvider(parallel = false)` to `true` and run the `testRunner` class.
+- If you want to run test parallely by opening browser instances at a time, change the `@DataProvider(parallel = false)` to `true` and run the `testRunner` class.
 - You can run the tests as per the tag provided for the scenarios in `src/test/resources/Features/ABSA.feature` file. You need to change the tag name in `src/test/java/Runner/MyTestRunner.java` file. The tag `@ABSA` will run both tests togather.
 - If you want to run the tests in different browser, for example Firefox then change the `src/test/resources/Configs/config.properties` into `browser = Firefox`.
-- If you to run tests in headless chrome browser then in `src/test/resources/Configs/config.properties` file change the property `headlessChrome` to `Yes`.
+- If you want to run tests in headless chrome browser then in `src/test/resources/Configs/config.properties` file change the property `headlessChrome` to `Yes`.
 
 ## Reporting
 
