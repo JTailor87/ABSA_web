@@ -68,9 +68,13 @@ Open source UI Automation Framework.
 
 ## Tests
 
+- In `src/main/java/org/example/factory/DriverFactory.java` the chrome version is hardcoded. Currently is `119.0.6045.160`.
+- If you don't want to hardcode then remove the `.browserVersion("119.0.6045.160")` from `src/main/java/org/example/factory/DriverFactory.java`. By doing this if `driverManager` won't pik up your current chrome version automatically then you can hardcode the chrome version as above.
 - Open `src/test/java/runner/testRunner.java`
 - Run `testRunner` class
 - If you want to run test parallely by opening browser instance at a time, change the `@DataProvider(parallel = false)` to `true` and run the `testRunner` class.
+- You can run the tests as per the tag provided for the scenarios in `src/test/resources/Features/ABSA.feature` file. You need to change the tag name in `src/test/java/Runner/MyTestRunner.java` file. The tag `@ABSA` will run both tests togather.
+- If you want to run the tests in different browser, for example Firefox then change the `src/test/resources/Configs/config.properties` into `browser = Firefox`.
 
 ## Reporting
 
@@ -81,3 +85,4 @@ Open source UI Automation Framework.
 - Cucumber html report will be found here `target/cucumber-reports.html`
 - Extent report wil be found here `target/SparkReport 29-Nov-23 10-26-28/Reports/Spark.html`
   <span style="color:red; font-weight:bold">NOTE:</span> <span style="color:yellow">The date in the path will change. Always do mvn clean and then run the tests.</span>
+- If any test case fails, the screenshot of that instance will capture in the report.
