@@ -26,9 +26,10 @@ public class DriverFactory {
         if (browser.equals("Chrome")) {
             ChromeOptions options = new ChromeOptions();
             options.addArguments("--headless");
-//            WebDriverManager.chromedriver().browserVersion("119.0.6045.160").setup();
-            WebDriverManager.chromedriver().setup();
-            tlDriver.set(new ChromeDriver(options));
+            WebDriverManager.chromedriver().browserVersion("119.0.6045.160").setup();
+//            WebDriverManager.chromedriver().setup();
+//            tlDriver.set(new ChromeDriver(options));
+            tlDriver.set(new ChromeDriver());
         } else if (browser.equals("Firefox")) {
             WebDriverManager.firefoxdriver().setup();
             tlDriver.set(new FirefoxDriver());
