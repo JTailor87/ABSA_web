@@ -1,13 +1,18 @@
 package org.example.factory;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
+import org.example.util.ConfigReader;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.safari.SafariDriver;
 
+import java.util.Properties;
+
 public class DriverFactory {
+    private ConfigReader configReader;
+    Properties prop;
     public WebDriver driver;
 
     public static ThreadLocal<WebDriver> tlDriver = new ThreadLocal<>();
@@ -20,16 +25,24 @@ public class DriverFactory {
      * @return this will return tldriver.
      */
     public WebDriver init_driver(String browser) {
+        configReader = new ConfigReader();
+        prop = configReader.init_prop();
 
         System.out.println("browser value is: " + browser);
 
         if (browser.equals("Chrome")) {
-            ChromeOptions options = new ChromeOptions();
-            options.addArguments("--headless");
-            WebDriverManager.chromedriver().browserVersion("119.0.6045.160").setup();
+            if (prop.getProperty("headlessChrome").equalsIgnoreCase("Yes")) {
+                System.out.println("Is " + browser +" running headless: "+prop.getProperty("headlessChrome"));
+                ChromeOptions options = new ChromeOptions();
+                options.addArguments("--headless");
+                WebDriverManager.chromedriver().browserVersion("119.0.6045.160").setup();
+//                WebDriverManager.chromedriver().setup();
+                tlDriver.set(new ChromeDriver(options));
+            } else {
+                WebDriverManager.chromedriver().browserVersion("119.0.6045.160").setup();
 //            WebDriverManager.chromedriver().setup();
-//            tlDriver.set(new ChromeDriver(options));
-            tlDriver.set(new ChromeDriver());
+                tlDriver.set(new ChromeDriver());
+            }
         } else if (browser.equals("Firefox")) {
             WebDriverManager.firefoxdriver().setup();
             tlDriver.set(new FirefoxDriver());

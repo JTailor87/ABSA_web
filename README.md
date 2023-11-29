@@ -75,6 +75,7 @@ Open source UI Automation Framework.
 - If you want to run test parallely by opening browser instance at a time, change the `@DataProvider(parallel = false)` to `true` and run the `testRunner` class.
 - You can run the tests as per the tag provided for the scenarios in `src/test/resources/Features/ABSA.feature` file. You need to change the tag name in `src/test/java/Runner/MyTestRunner.java` file. The tag `@ABSA` will run both tests togather.
 - If you want to run the tests in different browser, for example Firefox then change the `src/test/resources/Configs/config.properties` into `browser = Firefox`.
+- If you to run tests in headless chrome browser then in `src/test/resources/Configs/config.properties` file change the property `headlessChrome` to `Yes`.
 
 ## Reporting
 
