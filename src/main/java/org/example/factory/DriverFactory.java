@@ -3,6 +3,7 @@ package org.example.factory;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.safari.SafariDriver;
 
@@ -23,9 +24,11 @@ public class DriverFactory {
         System.out.println("browser value is: " + browser);
 
         if (browser.equals("Chrome")) {
+            ChromeOptions options = new ChromeOptions();
+            options.addArguments("--headless");
 //            WebDriverManager.chromedriver().browserVersion("119.0.6045.160").setup();
             WebDriverManager.chromedriver().setup();
-            tlDriver.set(new ChromeDriver());
+            tlDriver.set(new ChromeDriver(options));
         } else if (browser.equals("Firefox")) {
             WebDriverManager.firefoxdriver().setup();
             tlDriver.set(new FirefoxDriver());
